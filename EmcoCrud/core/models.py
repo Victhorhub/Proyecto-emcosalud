@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 from django.db import models
@@ -43,3 +44,74 @@ class City(models.Model):
 
     def __str__(self):
         return self.nameCity
+
+class Headquarters(models.Model):
+    nameHeadquarter = models.CharField(max_length=200, verbose_name="Nombre de la sede")
+    Direction = models.CharField(max_length=200, verbose_name="Direccion de la sede")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creacion")
+    updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edicion")
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Sede"
+        verbose_name_plural = "Sedes"
+        ordering = ["-created"]
+
+    def __str__(self):
+        return self.nameHeadquarter
+
+
+class Speciality(models.Model):
+    title = models.CharField(max_length=200, verbose_name="Especialidad")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creacion")
+    updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edicion")
+
+    class Meta:
+        verbose_name = "Especialidad"
+        verbose_name_plural = "Especialidades"
+        ordering = ["-created"]
+
+    def __str__(self):
+        return self.title
+
+
+# Funtionary model
+class Funtionary(models.Model):
+    identification = models.IntegerField()
+    name = models.CharField(max_length=200, verbose_name="Nombre del funcionario")
+    lastname = models.CharField(max_length=200, verbose_name="Apellido del funcionario")
+    birthday=models.DateField(verbose_name='Fecha de nacimiento')
+    telephone = models.CharField(max_length=10, verbose_name="Numero de celular")
+    email = models.EmailField(max_length=200, verbose_name="Correo electronico")
+    active = models.BooleanField(default=True, verbose_name="Activo")
+    speciality = models.ForeignKey(Speciality, on_delete=models.CASCADE , max_length=200, verbose_name="Especialidad")
+    #Curriculum docs
+    curriculum = models.FileField(verbose_name="Hoja de vida")
+    diploma = models.FileField(verbose_name="Diploma")
+    Retus = models.FileField(verbose_name="Retus")
+    courses = models.FileField(verbose_name="Cursos")
+    degree_certificate = models.FileField(verbose_name="Acta de grado")
+    title = models.FileField(verbose_name="Convalidacion titulo icfes")
+    #Contract
+    contract = models.FileField(verbose_name="Contrato")
+    type_vinculation = models.CharField(max_length=10, verbose_name="Tipo de vinculacion")
+    policy = models.FileField(max_length=10, verbose_name="Poliza")
+    tariff = models.IntegerField()
+    created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creacion")
+    updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edicion")
+    Headquarters = models.ForeignKey(Headquarters, on_delete=models.CASCADE)
+
+    def years(self):
+        today = date.today()
+        years = today.year - self.birthday.year
+        if today.month < self.birthday.month or (today.month == self.birthday.month and today.day < self.birthday.day):
+            years -= 1
+        return years
+
+    class Meta:
+        verbose_name = "Funcionario"
+        verbose_name_plural = "Funcionarios"
+        ordering = ["-created"]
+
+    def __str__(self):
+        return self.name
