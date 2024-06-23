@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">ID</th>
+        <th scope="col">Identificacion</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Email</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Especialidad</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for f in funtionary_ %}
+        <tr>
+            <th scope="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                </div>
+            </th>
+            <th scope="row">{{f.id}}</th>
+            <td>{{f.identification}}</td>
+            <td>{{f.name}}</td>
+            <td>{{f.lastname}}</td>
+            <td>{{f.birthday}}</td>
+            <td>{{f.telephone}}</td>
+            <td>{{f.email}}</td>
+            <td>{{f.active}}</td>
+            <td>{{f.speciality}}</td>
+            <td><button type="button" class="btn btn-warning">Editar</button></td>
+          </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <th><button type="button" class="btn btn-success">Registrar</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar</button></th>
+        <th><button type="button" class="btn btn-primary">Exportar</button></th>
+    </tfoot>
+</table>
+
+{% endblock %}
