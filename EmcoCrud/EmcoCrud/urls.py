@@ -17,8 +17,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core import views
+# victhor urls
+#
+#
+#
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.helloworld)
+    path('', views.helloworld),
+    #victhor path's
+    #
+    #
+    #
+    #
+    #
+    #
+    #
+    
 ]
