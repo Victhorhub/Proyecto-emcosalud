@@ -7,6 +7,18 @@
     <title>Emco Project</title>
 </head>
 <body>
-    
+    <h1>EmcoCrud</h1>
+
+    <h2>Inicio</h2>
+        <p>Bienvenido al inicio</p>
+
+    <ul>
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li><a href="{% url 'update_info' %}">Actualizacion de datos</a></li>
+        <li><a href="{% url 'about' %}">Acerca de</a></li>
+    </ul>
+
+    {% block content %}{% endblock %}
+
 </body>
 </html>
