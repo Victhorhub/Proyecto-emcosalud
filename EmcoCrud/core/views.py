@@ -14,3 +14,6 @@ def update_info(request):
 
 def about(request):
     return render(request, "core/about.html")
+
+def add_data(request):
+    return render(request, "core/add_data.html")

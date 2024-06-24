@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Edicion de registros{% endblock %}
+
+{% block content %}
+
+<h2>Ingreso de registros</h2>
+<p>Bienvenido al apartado de ingreso de datos</p>
+
+<form class="row g-2">
+
+    <div class="col-auto">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Identificacion</label>
+        <input class="form-control" type="text" id="identification" 
+        name="identification" placeholder="ingrese la identificacion" readonly required>
+    </div>
+
+    <div class="col-auto">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Identificacion</label>
+        <input class="form-control" type="text" id="identification" 
+        name="identification" placeholder="ingrese la identificacion" readonly required>
+    </div>
+    
+
+</form>
+
+{% endblock %}
