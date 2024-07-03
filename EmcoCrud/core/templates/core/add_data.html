@@ -7,10 +7,20 @@
 <h2>Ingreso de registros</h2>
 <p>Bienvenido al apartado de ingreso de datos</p>
 
-    <form method="post">
-        {% csrf_token %}
-        {{form.identification}}
-        {% render_field form.identification %}
-        <button type="submit" class="btn btn-success">Success</button>
-    </form>
+    <div class="capa">
+        <main role="main">
+            <div class="container">
+                <div class="row mt-3">
+                    <div class="col-md-9 mx-auto mb-5">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <h2>Registro de datos</h2>
+                            {{form.as_p}}
+                            <input class="btn btn-primary" type="submit" value="Subir">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 {% endblock %}
