@@ -96,10 +96,10 @@ class Funtionary(models.Model):
     contract = models.FileField(upload_to= 'contract/',verbose_name="Contrato", default="upload your contract")
     type_vinculation = models.CharField(max_length=100, verbose_name="Tipo de vinculacion", null=True)
     policy = models.FileField(upload_to= 'policy/',verbose_name="Poliza", default="upload your poliza")
-    tariff = models.IntegerField(null=True)
+    tariff = models.IntegerField(null=True, verbose_name="Tarifa")
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creacion")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edicion")
-    Headquarters = models.ForeignKey(Headquarters, on_delete=models.CASCADE)
+    Headquarters = models.ForeignKey(Headquarters, on_delete=models.CASCADE, verbose_name="Sede")
 
     def years(self):
         today = date.today()
