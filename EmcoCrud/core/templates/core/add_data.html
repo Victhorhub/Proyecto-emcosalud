@@ -7,5 +7,10 @@
 <h2>Ingreso de registros</h2>
 <p>Bienvenido al apartado de ingreso de datos</p>
 
-
+    <form method="post">
+        {% csrf_token %}
+        {{form.identification}}
+        {% render_field form.identification %}
+        <button type="submit" class="btn btn-success">Success</button>
+    </form>
 {% endblock %}
