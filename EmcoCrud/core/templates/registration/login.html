@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/Proyecto-emcosalud/EmcoCrud/core/css/syles.css">
   <title>Document</title>
 </head>
 <body>
@@ -20,6 +21,7 @@
       <div class="card-body">
         <h5 class="card-title">Ingrese sus Credenciales</h5>
         {{ form | crispy }}
+        <a href="{% url 'password_reset' %}" class="card-link">¿Olvidaste tu contraseña?</a>
         <a href={% url 'register' %} class="card-link">Registrarse</a>
         <button class="btn btn-sm btn-primary float-end" type="submit">Iniciar Sesión</button>
       </div>
