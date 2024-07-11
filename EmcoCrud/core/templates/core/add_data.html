@@ -2,7 +2,7 @@
 
 {% block title %}Edicion de registros{% endblock %}
 {% load widget_tweaks %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -17,7 +17,7 @@
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <h2>Registro de datos</h2>
-                            {{form.as_div}}
+                            {{form|crispy}}
                             <input class="btn btn-primary" type="submit" value="Subir">
                         </form>
                     </div>

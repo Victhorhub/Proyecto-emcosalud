@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Funtionary
 from  django import forms
@@ -21,6 +21,12 @@ def about(request):
 
 
 def upload_funtionary(request):
+
+    if request.method == 'POST':
+        form = FuntionaryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
     context = {'form': FuntionaryForm()}
     return render(request, 'core/add_data.html', context)
 
