@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-        {% for f in funtionary_ %}
+      {% for f in funtionary_ %}
         <tr>
             <th scope="row">
                 <div class="form-check">
@@ -37,10 +37,16 @@
             <td>{{f.email}}</td>
             <td>{{f.active}}</td>
             <td>{{f.speciality}}</td>
-            <td>{{f.Headquarters}}</td>
+            <td><!--{{f.Headquarters}}-->
+
+              {% for headquarters in f.Headquarters.all %}
+                {{ headquarters.nameHeadquarter }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+
+            </td>
             <td><button type="button" class="btn btn-warning">Editar</button></td>
-          </tr>
-        {% endfor %}
+        </tr>
+      {% endfor %}
     </tbody>
     <tfoot>
         <th><a class="nav-link" href="{% url 'upload_funtionary' %}">Agregar datos</a></th>

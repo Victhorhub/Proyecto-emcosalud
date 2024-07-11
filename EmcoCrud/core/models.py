@@ -100,7 +100,7 @@ class Funtionary(models.Model):
     tariff = models.IntegerField(null=True, verbose_name="Tarifa")
     created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creacion")
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edicion")
-    Headquarters = models.ForeignKey(Headquarters, on_delete=models.CASCADE, verbose_name="Sede", null=True)
+    Headquarters = models.ManyToManyField(Headquarters, verbose_name="Sede")
 
     def years(self):
         today = date.today()

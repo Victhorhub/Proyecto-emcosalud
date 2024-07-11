@@ -10,9 +10,3 @@ class FuntionaryForm(forms.ModelForm):
         , "speciality", "curriculum", "diploma", "Retus", "courses", "degree_certificate", "title", "contract"
         , "type_vinculation", "policy", "tariff", "Headquarters")
 
-
-# class FuntionaryForm(forms.ModelForm):
-#     funtionary_headquarters = forms.ModelMultipleChoiceField(
-#         queryset=Headquarters.objects.all(),
-#         widget=forms.SelectMultiple,
-#     )
