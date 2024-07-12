@@ -11,6 +11,7 @@ from django.views.generic import TemplateView
 
 def home(request):
     funtionary_ = Funtionary.objects.all()
+    #age = funtionary_.age()
     return render(request, "core/home.html", {"funtionary_" : funtionary_})
 
 def update_info(request):

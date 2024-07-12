@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
 # Create your models here.
 from django.db import models
@@ -102,12 +103,19 @@ class Funtionary(models.Model):
     updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edicion")
     Headquarters = models.ManyToManyField(Headquarters, verbose_name="Sede")
 
-    def years(self):
+    @property
+    def age(self):
         today = date.today()
-        years = today.year - self.birthday.year
-        if today.month < self.birthday.month or (today.month == self.birthday.month and today.day < self.birthday.day):
-            years -= 1
-        return years
+        return today.year - self.birthday.year - ((today.month, today.day) < (self.birthday.month, self.birthday.day))
+
+    # @property
+    # def state(self):
+    #     state = null
+    #     if (active == True):
+    #         state = "Activo"
+    #     else:
+    #         state = "Inactivo"
+    #     return state
 
     class Meta:
         verbose_name = "Funcionario"
