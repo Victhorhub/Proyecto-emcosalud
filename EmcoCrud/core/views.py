@@ -34,3 +34,9 @@ def upload_funtionary(request):
         'form': form,
     }
     return render(request, 'core/add_data.html', context)
+
+
+def deleteData(request,id):
+    funtionary_ = Funtionary.objects.get(id=id)
+    funtionary_.delete()
+    return redirect('home')
