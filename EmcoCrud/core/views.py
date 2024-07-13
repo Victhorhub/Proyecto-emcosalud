@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Funtionary
 from  django import forms
@@ -11,11 +11,8 @@ from django.views.generic import TemplateView
 
 def home(request):
     funtionary_ = Funtionary.objects.all()
-    #age = funtionary_.age()
     return render(request, "core/home.html", {"funtionary_" : funtionary_})
 
-def update_info(request):
-    return render(request, "core/update_info.html")
 
 def about(request):
     return render(request, "core/about.html")
@@ -40,3 +37,15 @@ def deleteData(request,id):
     funtionary_ = Funtionary.objects.get(id=id)
     funtionary_.delete()
     return redirect('home')
+
+
+def update_info(request, id):
+    funtionary_ = get_object_or_404(Funtionary, id=id)
+    if request.method == 'POST':
+        form = FuntionaryForm(request.POST, request.FILES, instance=funtionary_)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = FuntionaryForm(instance=funtionary_)
+    return render(request, 'core/update_info.html', {'form': form})

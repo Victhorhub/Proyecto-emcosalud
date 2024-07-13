@@ -1,10 +1,36 @@
 {% extends 'core/base.html' %}
 
 {% block title %}Edicion de registros{% endblock %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-<h2>Actualizacion de datos</h2>
-<p>Bienvenido al apartado de actualizacion de datos</p>
+<h2>Ingreso de registros</h2>
+<p>Bienvenido al apartado de edicion de datos</p>
+
+    <div class="capa">
+        <main role="main">
+            <div class="container">
+                <div class="row mt-3">
+                    <div class="col-md-9 mx-auto mb-5">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h2>Edicion de datos</h2>
+                            {{form|crispy}}
+                            <input class="btn btn-primary" type="submit" value="Editar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    $("#id_Headquarters").select2();
+</script>
 
 {% endblock %}

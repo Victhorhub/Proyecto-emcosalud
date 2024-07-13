@@ -62,7 +62,7 @@
               <td>
                 <a href="{{ f.contract.url }}" target="_blank">Ver</a>
               </td>
-              <td><button type="button" class="btn btn-warning">Editar</button></td>
+              <td><a href="update_info/{{f.id}}"class="btn btn-warning">Editar</a></td>
               <td><a href="deleteData/{{f.id}}" class="btn btn-danger delete-btn">Eliminar</a></td>
 
 
@@ -71,7 +71,7 @@
         {% endfor %}
       </tbody>
       <tfoot>
-          <th><a class="nav-btn btn-primary" href="{% url 'upload_funtionary' %}">Agregar datos</a></th>
+          <th><a class="btn btn-success" href="{% url 'upload_funtionary' %}">Agregar</a></th>
           <th><button type="button" class="btn btn-primary">Exportar</button></th>
       </tfoot>
   </table>
