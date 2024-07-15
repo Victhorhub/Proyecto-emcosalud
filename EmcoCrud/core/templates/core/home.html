@@ -6,6 +6,26 @@
 {% load static %}
 
   <nav class="navbar bg-body-tertiary">
+
+    <!--Filters-->
+    <div class="container-fluid">
+      <form method="get" class="d-flex">
+        <select class="form-select" aria-label="Default select example" id="filter-speciality" name="filter-speciality">
+          <option selected>Selecciona la Especialidad</option>
+          {% for f in speciality_filter %}
+            <option value="{{f}}">{{f}}</option>
+          {% endfor%}
+        </select>
+    
+        <select class="form-select" aria-label="Default select example" id="filter-headquarter" name="filter-headquarter">
+          <option selected>Selecciona la Sede</option>
+          {% for f in headquarters_filter %}
+            <option value="{{f}}">{{f}}</option>
+          {% endfor%}
+        </select>
+      </form>
+    </div>
+
     <div class="container-fluid">
       <form class="d-flex" role="search" action="{% url 'search' %}">
         <input class="form-control me-2" name="q" type="search" placeholder="Buscar" aria-label="Search">
