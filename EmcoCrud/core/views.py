@@ -5,14 +5,25 @@ from  django import forms
 from .forms import FuntionaryForm
 from django.views.generic import CreateView
 from django.views.generic import TemplateView
+from django.db.models import Q
 
 # Create your views here.
 
+def search(request):
+    if 'q' in request.GET:
+        q = request.GET['q']
+        multiple_query =  Q(Q(name__icontains=q) | Q(lastname__icontains=q))
+        funtionary_query = Funtionary.objects.filter(multiple_query)
+    else:
+        funtionary_query = Funtionary.objects.all()
+    context = {
+        'funtionary_query' : funtionary_query
+    }
+    return render(request, "core/search.html", context)
 
 def home(request):
     funtionary_ = Funtionary.objects.all()
     return render(request, "core/home.html", {"funtionary_" : funtionary_})
-
 
 def about(request):
     return render(request, "core/about.html")

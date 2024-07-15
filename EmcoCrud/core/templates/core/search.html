@@ -5,16 +5,8 @@
 {% block content %}
 {% load static %}
 
-  <nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-      <form class="d-flex" role="search" action="{% url 'search' %}">
-        <input class="form-control me-2" name="q" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-info" type="submit">Buscar</button>
-      </form>
-    </div>
-  </nav>
 
-  <!--Modal to delete confirmation-->
+<!--Modal to delete confirmation-->
   <div class="modal" tabindex="-1" id="deleteModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -51,7 +43,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for f in funtionary_ %}
+        {% for f in funtionary_query %}
           <tr>
               <th scope="row">{{f.id}}</th>
               <td>{{f.identification}}</td>
@@ -92,5 +84,6 @@
         });
     });
   </script>
+
 
 {% endblock %}

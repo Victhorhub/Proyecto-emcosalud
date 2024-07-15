@@ -9,6 +9,7 @@ urlpatterns = [
     path('about', views.about, name="about"),
     path('upload_funtionary', views.upload_funtionary, name="upload_funtionary"),
     path('deleteData/<int:id>', views.deleteData, name="deleteData"),
+    path('search', views.search, name="search"),
 ]
 
 

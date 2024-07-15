@@ -10,3 +10,6 @@ class FuntionaryForm(forms.ModelForm):
         , "speciality", "curriculum", "diploma", "Retus", "courses", "degree_certificate", "title", "contract"
         , "type_vinculation", "policy", "tariff", "Headquarters")
 
+
+# class SearchForm(forms.Form):
+#     query = forms.CharField(label='Search', max_length=100)
