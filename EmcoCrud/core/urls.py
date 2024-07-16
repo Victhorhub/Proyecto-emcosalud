@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from . import views
+from .views import export_to_excel
 
 urlpatterns = [
     path('', views.home, name="home"),
@@ -9,7 +10,8 @@ urlpatterns = [
     path('about', views.about, name="about"),
     path('upload_funtionary', views.upload_funtionary, name="upload_funtionary"),
     path('deleteData/<int:id>', views.deleteData, name="deleteData"),
-    path('search', views.search, name="search"),
+    path('search', views.search, name="search"),    
+    path('exportar-excel/', export_to_excel, name='export_to_excel'),
 ]
 
 
