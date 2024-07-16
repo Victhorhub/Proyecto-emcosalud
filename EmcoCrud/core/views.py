@@ -40,6 +40,59 @@ def upload_funtionary(request):
     return render(request, 'core/add_data.html', context)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def export_to_excel(request):
     # Obtener los datos de los funcionarios con los campos necesarios
     funcionarios = Funtionary.objects.all()
