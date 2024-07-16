@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Funtionary, Speciality, Headquarters
-from .models import Funtionary
 from .models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from openpyxl import Workbook
