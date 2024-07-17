@@ -14,7 +14,21 @@ from django.db.models import Q
 from django.utils.timezone import localtime
 import pandas as pd
 from django.db.models import F
-# Create your views here.
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from .forms import CustomUserCreationForm
+from django.contrib.auth import authenticate, login
+
+def index(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        return redirect('login')
+
+# # Create your views here.
+# def home(request):
+#     return render(request, 'core/home.html')
 
 def search(request):
     if 'q' in request.GET:
@@ -142,4 +156,27 @@ def export_to_excel(request):
         df_final.to_excel(writer, index=False, sheet_name='Funcionarios')
 
     return response
+
+@login_required
+def products(request):
+    return render(request, 'core/products.html')
+
+def register(request):
+    data = {
+        'form': CustomUserCreationForm()
+    }
+
+    if request.method == 'POST':
+        user_creation_form = CustomUserCreationForm(data=request.POST)
+
+        if user_creation_form.is_valid():
+            user_creation_form.save()
+
+            user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
+            login(request, user)
+            return redirect('login')
+        else:
+            data['form'] = user_creation_form
+
+    return render(request, 'registration/register.html', data)
 
